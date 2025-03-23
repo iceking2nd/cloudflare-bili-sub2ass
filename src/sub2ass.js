@@ -1,6 +1,7 @@
 import { DOMParser } from	'xmldom';
 import axios from 'axios'
 import * as zlib from 'node:zlib';
+import { isNil } from 'lodash-es';
 
 class DanmakuConverter {
 	constructor() {
@@ -49,7 +50,7 @@ class DanmakuConverter {
 			'Accept-Encoding': 'deflate'
 		};
 
-		if (cid.length <= 0) return [];
+		if (isNil(cid)) return [];
 
 		try {
 			// 发送 HTTP 请求（使用 Axios API）
