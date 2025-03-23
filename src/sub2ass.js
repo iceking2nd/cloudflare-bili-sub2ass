@@ -49,6 +49,8 @@ class DanmakuConverter {
 			'Accept-Encoding': 'deflate'
 		};
 
+		if (cid.length <= 0) return [];
+
 		try {
 			// 发送 HTTP 请求（使用 Axios API）
 			const response = await axios.get(`https://comment.bilibili.com/${cid}.xml`, {

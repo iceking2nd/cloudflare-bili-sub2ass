@@ -14,6 +14,7 @@ export default {
 		const url = new URL(request.url);
 		switch (url.pathname.split('/')[1]){
 			case 'subtitle':
+				if (!url.searchParams.has('cid')) return new Response('cid is required', {status: 400});
 				const assContent = await danmakuConverter.xml2ass(
 					url.searchParams.get('cid'),
 					url.searchParams.has('width') ? parseInt(url.searchParams.get('width'), 10) : 1920,
