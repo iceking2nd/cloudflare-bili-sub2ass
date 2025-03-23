@@ -6,11 +6,18 @@
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
-		"test": "vitest"
+		"test": "vitest",
+		"login": "wrangler login",
+		"logout": "wrangler logout"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.7.5",
 		"vitest": "~3.0.7",
 		"wrangler": "^4.4.0"
+	},
+	"dependencies": {
+		"axios": "^1.8.4",
+		"lodash-es": "^4.17.21",
+		"xmldom": "^0.6.0"
 	}
 }
