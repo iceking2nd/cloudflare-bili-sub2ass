@@ -30,8 +30,8 @@ export default {
 					url.searchParams.has('is_reduce_comments') ? url.searchParams.get('is_reduce_comments').toUpperCase() === "TRUE" : false
 				);
 				console.debug(assContent)
-				return new Response(assContent, {status: 200,headers: {'Content-Type': 'text/plain; charset=utf-8'}});
+				return new Response(assContent, {status: 200,headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' }});
 		}
-		return new Response('success', {status: 200,headers: {'Content-Type': 'text/plain'}});
+		return new Response('success', {status: 200,headers: {'Content-Type': 'text/plain', 'Cache-Control': 'no-store'}});
 	},
 };
