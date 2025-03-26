@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:latest
 LABEL authors="Daniel Wu"
 
 COPY . /cloudflare-bili-sub2ass
