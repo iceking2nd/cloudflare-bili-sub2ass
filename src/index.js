@@ -8,6 +8,7 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 import danmakuConverter from './sub2ass';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
 	async fetch(request, env, ctx) {
@@ -30,7 +31,11 @@ export default {
 					url.searchParams.has('is_reduce_comments') ? url.searchParams.get('is_reduce_comments').toUpperCase() === "TRUE" : false
 				);
 				console.debug(assContent)
-				return new Response(assContent, {status: 200,headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' }});
+				return new Response(assContent, {status: 200,headers: {
+						'Content-Type': 'text/plain; charset=utf-8',
+						'Cache-Control': 'no-store',
+						'Content-Disposition': `attachment; filename="${uuidv4()}.ass"`
+				}});
 		}
 		return new Response('success', {status: 200,headers: {'Content-Type': 'text/plain', 'Cache-Control': 'no-store'}});
 	},
