@@ -7,7 +7,7 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
-import danmakuConverter from './sub2ass';
+import DanmakuConverter from './sub2ass';
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
@@ -16,7 +16,8 @@ export default {
 		switch (url.pathname.split('/')[1]){
 			case 'subtitle':
 				if (!url.searchParams.has('cid')) return new Response('cid is required', {status: 400});
-				const assContent = await danmakuConverter.xml2ass(
+				const converter = new DanmakuConverter();
+				const assContent = await converter.xml2ass(
 					url.searchParams.get('cid'),
 					url.searchParams.has('width') ? parseInt(url.searchParams.get('width'), 10) : 1920,
 					url.searchParams.has('height') ? parseInt(url.searchParams.get('height'), 10) : 1080,
